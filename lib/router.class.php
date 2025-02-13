@@ -30,15 +30,20 @@ class Router
         // print_r($tokens);
         $paths = explode('/', $tokens[0]);
         if (count($paths) > 0) {
-            $elements = strtolower(current($paths));
-            if (in_array($elements, array_keys($routes))) {
-                $this->route = $elements;
-                $this->method_prefix = $routes[$this->route];
-                array_shift($paths);
-            } else if (in_array($elements, Config::get('languages'))) {
-                $this->language = $elements;
+            // Хэлийг байгаа эсэхийг шалгах
+            if (in_array(current($paths), Config::get('languages'))) {
+                $this->language = current($paths);
                 array_shift($paths);
             }
+
+
+            if (in_array(current($paths), array_keys($routes))) {
+                $this->route = current($paths);
+                $this->method_prefix = $routes[$this->route];
+                array_shift($paths);
+            }
+
+
             //// URI parse example, looking for Controller  
             if (current($paths)) {
                 $this->controller = strtolower(current($paths));

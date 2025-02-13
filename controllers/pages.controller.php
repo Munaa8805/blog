@@ -9,26 +9,37 @@ class PagesController extends Controller
         parent::__construct();
     }
 
-    public function admin_view($id)
-    {
-        echo 'Admin view';
-    }
+
     public function student_view($id)
     {
         echo 'Student view';
     }
     public function index()
     {
-        echo 'Index action';
-        echo '<br>';
-        echo 'hi: <pre>';
-        print_r($this->params);
+        return (new View([
+            'site_title' => Config::get('site_name'),
+            'student_name' => 'Амараа',
+        ], 'pages' . DS . 'index.html'))->render();
     }
     public function view()
     {
-        echo 'View action';
-        echo '<br>';
-        echo 'hi: <pre>';
-        print_r($this->params);
+        // $this->data['site_title'] = $this->params[0];
+        // $this->data['course_name'] = 'React JS Course';
+        // $this->data['course_price'] = '$100';
+        // $this->data['course_description'] = 'This is a React JS course';
+        // $view = new View($this->data, 'pages/view.html');
+        // return $view->render();
+        return (new View([
+            'site_title' => Config::get('site_name') . ' | Course',
+            'course_name' => 'React эхнээс дуустал',
+            'course_price' => '100',
+        ], 'pages' . DS . 'view.html'))->render();
+    }
+    public function admin_view()
+    {
+        return (new View([
+            'site_title' => Config::get('site_name') . ' | Admin',
+            'visit_count' => 'secret#12',
+        ], 'pages' . DS . 'admin_view.html'))->render();
     }
 }

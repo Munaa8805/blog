@@ -19,8 +19,15 @@ spl_autoload_register(function ($class_name) {
         require_once $controller_path;
     } else {
         // die('The file does not exist.');
-        throw new Exception('The file does not exist.');
+        die($clss_name . ' class does not exist.');
+        // throw new Exception('The file does not exist.');
     }
     // echo $lib_path . '<br>';
 });
 require_once ROOT . DS . 'config' . DS . 'config.php';
+
+
+function __($key, $default_value = '')
+{
+    return Lang::get($key) ?? $default_value;
+}

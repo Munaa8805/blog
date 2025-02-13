@@ -6,6 +6,9 @@ class App
     public function run($uri)
     {
         self::$router = new Router($uri);
+        // Хэлний мэдээллийг ачаалах
+        Lang::load(self::$router->getLanguage());
+
         $controller = ucfirst(self::$router->getController()) . 'Controller';
         // echo $controller;
 
@@ -13,12 +16,12 @@ class App
         $action = self::$router->getMethodPrefix() . self::$router->getAction();
         // echo $action;
 
-        // echo '<br>';
-        $obj = new $controller;
-        if (method_exists($obj, $action)) {
-            $obj->$action();
+        // Контроллерийн функцийг нь дуудах
+        $obj = new $controller();
+        if (method_exists($controller, $action)) {
+            echo $obj->$action();
         } else {
-            echo "Method $action not found in controller $controller";
+            echo "$controller классын $action method байхгүй байна.";
         }
     }
 

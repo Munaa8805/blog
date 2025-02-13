@@ -13,6 +13,7 @@ session_start([
 const DS = DIRECTORY_SEPARATOR;
 
 define('ROOT', dirname(dirname(__FILE__)));
+const VIEWS_PATH = ROOT . DS . 'views' . DS;
 
 // echo DIRECTORY_SEPARATOR . '<br>';
 require_once ROOT . DS . 'lib' . DS . 'init.php';

@@ -7,9 +7,9 @@ Config::set('database.user', 'root');
 Config::set('database.password', 'abc123');
 
 
-echo Config::get('site_name');
+// echo Config::get('site_name');
 
-echo "</br>";
+// echo "</br>";
 
 
 //// System default value
@@ -20,6 +20,6 @@ Config::set('routes', array(
 ));
 Config::set('languages', array('en', 'mn', 'jp'));
 Config::set('default_route', 'default');
-Config::set('default_language', 'en');
+Config::set('default_language', 'mn');
 Config::set('default_controller', 'pages');
 Config::set('default_action', 'index');
