@@ -1,10 +1,13 @@
 <?php
 
+
+
 Config::set('site_name', 'Codely.mn');
 Config::set('languages', ['en', 'mn']);
-Config::set('database.name', 'mvc');
+Config::set('database.name', 'codelydb');
 Config::set('database.user', 'root');
-Config::set('database.password', 'abc123');
+Config::set('database.password', '');
+Config::set('database.host', 'localhost');
 
 
 // echo Config::get('site_name');

@@ -3,9 +3,11 @@
 class App
 {
     protected static $router;
+    protected static $db;
     public function run($uri)
     {
         self::$router = new Router($uri);
+        self::$db = new Db();
         // Хэлний мэдээллийг ачаалах
         Lang::load(self::$router->getLanguage());
 
