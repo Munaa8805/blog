@@ -14,39 +14,38 @@ class Db
         if ($this->connection->connect_error) {
             $this->error = $this->connection->connect_error;
             throw new Exception('Could not connect to DB' . $this->error);
-        } else {
-            echo "Connected";
         }
     }
 
-    // public function query($sql)
-    // {
-    //     if (!$this->connection) {
-    //         return false;
-    //     }
+    public function query($sql)
+    {
+        if (!$this->connection) {
+            return false;
+        }
 
-    //     $result = $this->connection->query($sql);
+        $result = $this->connection->query($sql);
 
-    //     if (mysqli_error($this->connection)) {
-    //         throw new Exception(mysqli_error($this->connection));
-    //     }
+        if (mysqli_error($this->connection)) {
+            throw new Exception(mysqli_error($this->connection));
+        }
 
-    //     if (is_bool($result)) {
-    //         return $result;
-    //     }
+        if (is_bool($result)) {
+            return $result;
+        }
 
-    //     $data = array();
-    //     while ($row = mysqli_fetch_assoc($result)) {
-    //         $data[] = $row;
-    //     }
+        $data = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
 
-    //     return $data;
-    // }
+        return $data;
+    }
 
-    // public function escape($str)
-    // {
-    //     return mysqli_escape_string($this->connection, $str);
-    // }
+    public function escape($str)
+    {
+        // return mysqli_escape_string($this->connection, $str);
+        return mysqli_real_escape_string($this->connection, $str);
+    }
 
     public function __destruct()
     {

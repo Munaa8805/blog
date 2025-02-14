@@ -23,3 +23,8 @@ $router = new Router($_SERVER['REQUEST_URI']);
 
 $app = new App();
 $app->run($_SERVER['REQUEST_URI']);
+$rows = App::$db->query('SELECT * FROM pages');
+
+
+echo '<pre>';
+print_r($rows);

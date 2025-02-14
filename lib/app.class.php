@@ -3,7 +3,7 @@
 class App
 {
     protected static $router;
-    protected static $db;
+    public static $db;
     public function run($uri)
     {
         self::$router = new Router($uri);
