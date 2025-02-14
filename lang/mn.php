@@ -1,7 +1,13 @@
 <?php
 return [
-    'admin.header' => "ЭХЛЭЛ | БҮТЭЭГДЭХҮҮН | ХОЛБОГДОХ",
-    'admin.footer' => 'Бүх эрх хуулиар хамгаалагдсан',
-    'default.header' => 'СУРГАЛТУУД | БИДНИЙ ТУХАЙ',
-    'default.footer' => 'Тавтай морил!',
+    'admin.menu_logo' => "CODELY",
+    'admin.menu_admin' => "АДМИН",
+    'admin.header' => "HOME | PRODUCTS | CONTACT",
+    'admin.menu_pages' => "ХУУДСУУД",
+    'admin.menu_contact' => "ХОЛБОГДОХ",
+    'admin.footer' => 'All rights reserved',
+    'default.header' => 'COURSES | ABOUT',
+    'default.menu_pages' => "ХУУДСУУД",
+    'default.menu_contact' => "ХОЛБОГДОХ",
+    'default.footer' => 'Welcome!',
 ];
