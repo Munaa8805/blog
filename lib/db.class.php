@@ -12,7 +12,8 @@ class Db
         $this->connection = new mysqli(Config::get('database.host'), Config::get('database.user'), Config::get('database.password'), Config::get('database.name'));
 
         if ($this->connection->connect_error) {
-            throw new Exception('Could not connect to DB');
+            $this->error = $this->connection->connect_error;
+            throw new Exception('Could not connect to DB' . $this->error);
         } else {
             echo "Connected";
         }
