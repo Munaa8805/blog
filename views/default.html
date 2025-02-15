@@ -1,3 +1,11 @@
+<!-- <?php
+
+
+
+echo App::getRouter()->getController();
+?> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +27,7 @@
     <header>
         <nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <?=__('admin.menu_logo')?>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,12 +38,12 @@
                 <div class="collapse navbar-collapse flex-end" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link <?php if(App::getRouter()->getController() == 'pages') echo 'active'; ?>" aria-current="page" href="/pages">
                                 <?=__('default.menu_pages')?>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link <?php if(App::getRouter()->getController() == 'contact') echo 'active'; ?>" href="/contact">
                                 <?=__('default.menu_contact')?>
                             </a>
                         </li>
@@ -54,11 +62,11 @@
 
   
     <footer class="container footer">
-        <h3>default.html ==>
+        <h3>
             <?=__('default.footer')?>
         </h3>
         <p>
-            &copy;
+           Copyright &copy;
             <?php echo date('Y') ?>
         </p>
     </footer>

@@ -1,4 +1,15 @@
-<h4>index.html ==>
-    Тавтай морил,
-    <?=$data['student_name']?>!
+<h4>
+    Today blogs
+
 </h4>
+
+<div>
+
+    <?php foreach($data['webs'] as $web):?>
+
+    <a href="http://codely.test/pages/view/<?=$web['alias']?>">
+        <?=$web['title']?><br />
+    </a>
+
+    <?php endforeach ?>
+</div>

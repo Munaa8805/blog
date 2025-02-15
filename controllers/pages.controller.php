@@ -7,20 +7,22 @@ class PagesController extends Controller
     {
         // echo 'Pages controller<br>';
         parent::__construct();
+        $this->model = new Page();
     }
 
 
-    public function student_view($id)
-    {
-        echo 'Student view';
-    }
     public function index()
     {
+        // render all pages from the database
+
+        $webs = $this->model->getList();
+        // var_dump($webs);
         return (new View([
             'site_title' => Config::get('site_name'),
-            'student_name' => 'Амараа',
+            'webs' => $webs,
         ], 'pages' . DS . 'index.html'))->render();
     }
+    //// View page CONTENT
     public function view()
     {
         // $this->data['site_title'] = $this->params[0];
@@ -29,17 +31,25 @@ class PagesController extends Controller
         // $this->data['course_description'] = 'This is a React JS course';
         // $view = new View($this->data, 'pages/view.html');
         // return $view->render();
+        $web =  $this->model->getAlias($this->params[0]);
         return (new View([
-            'site_title' => Config::get('site_name') . ' | Course',
-            'course_name' => 'React эхнээс дуустал',
-            'course_price' => '100',
+            'site_title' => Config::get('site_name') . ' | Blog',
+            'web' => $web[0],
         ], 'pages' . DS . 'view.html'))->render();
     }
+
+
+    ////
     public function admin_view()
     {
         return (new View([
             'site_title' => Config::get('site_name') . ' | Admin',
             'visit_count' => 'secret#12',
         ], 'pages' . DS . 'admin_view.html'))->render();
+    }
+
+    public function student_view($id)
+    {
+        echo 'Student view';
     }
 }
