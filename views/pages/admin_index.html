@@ -1,0 +1,11 @@
+<h4>Системд байгаа блогууд 
+</h4>
+<h1>Admin blog</h1>
+
+<?php foreach($data['webs'] as $web):?>
+
+Засварлах | Устгах <a href="http://codely.mn/pages/view/<?=$web['alias']?>">
+    <?=$web['title']?>
+</a><br />
+
+<?php endforeach ?>

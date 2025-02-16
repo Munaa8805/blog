@@ -20,6 +20,14 @@ class ContactController extends Controller
         return (new View([
             'site_title' => Config::get('site_name'),
 
-        ], 'pages' . DS . 'contact.html'))->render();
+        ], 'contact' . DS . 'index.html'))->render();
+    }
+    public function admin_index()
+    {
+        // var_dump($webs);
+        return (new View([
+            'site_title' => Config::get('site_name'),
+
+        ], 'contact' . DS . 'index.html'))->render();
     }
 }

@@ -68,7 +68,12 @@ class Router
     }
 
 
-
+    public function getPathWithLanguage()
+    {
+        $uri = str_replace("/mn/", "", $_SERVER['REQUEST_URI']);
+        $uri = str_replace("/en/", "", $uri);
+        return $uri;
+    }
 
 
     public function getUrl()

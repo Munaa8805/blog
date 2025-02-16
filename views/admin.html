@@ -18,10 +18,10 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-dark">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <?=__('admin.menu_logo')?>
+                <a class="navbar-brand" href="/">
+                    <?=Config::get('site_name')?>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -31,22 +31,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">
+                            <a class="nav-link <?php if(App::getRouter()->getController()=='pages') echo 'active'; ?>"
+                                aria-current="page" href="/<?=App::getRouter()->getLanguage()?>/admin/pages">
                                 <?=__('admin.menu_pages')?>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link <?php if(App::getRouter()->getController()=='contact') echo 'active'; ?>"
+                                aria-current="page" href="/<?=App::getRouter()->getLanguage()?>/admin/contact">
                                 <?=__('admin.menu_contact')?>
                             </a>
                         </li>
-
-
+                        <li class="nav-item">
+                            <?php if(App::getRouter()->getLanguage()=='en'):?>
+                            <a class="nav-link" aria-current="page"
+                                href="/mn/<?=App::getRouter()->getPathWithoutLanguage()?>">
+                                <?=__('default.menu_mongolia')?>
+                            </a>
+                            <?php else: ?>
+                            <a class="nav-link" aria-current="page"
+                                href="/en/<?=App::getRouter()->getPathWithoutLanguage()?>">
+                                <?=__('default.menu_english')?>
+                            </a>
+                            <?php endif ?>
+                        </li>
                     </ul>
-                    <!-- <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
                 </div>
             </div>
         </nav>
@@ -55,7 +64,9 @@
         <?=__('admin.header')?>
     </h3> -->
 
-    <?=$data['site_html_content']?>
+    <main class="container mt-5">
+        <?=$data['site_html_content']?>
+    </main>
 
 
     <footer>

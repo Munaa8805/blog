@@ -22,6 +22,17 @@ class PagesController extends Controller
             'webs' => $webs,
         ], 'pages' . DS . 'index.html'))->render();
     }
+    public function  admin_index()
+    {
+        // render all pages from the database
+
+        $webs = $this->model->getList();
+        // var_dump($webs);
+        return (new View([
+            'site_title' => Config::get('site_name') . ' | Admin',
+            'webs' => $webs,
+        ], 'pages' . DS . 'admin_index.html'))->render();
+    }
     //// View page CONTENT
     public function view()
     {
@@ -46,10 +57,5 @@ class PagesController extends Controller
             'site_title' => Config::get('site_name') . ' | Admin',
             'visit_count' => 'secret#12',
         ], 'pages' . DS . 'admin_view.html'))->render();
-    }
-
-    public function student_view($id)
-    {
-        echo 'Student view';
     }
 }

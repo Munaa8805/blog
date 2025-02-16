@@ -9,5 +9,7 @@ return [
     'default.header' => 'COURSES | ABOUT',
     'default.menu_pages' => "PAGES",
     'default.menu_contact' => "CONTACT",
+    'default.menu_mongol' => "MN",
+    'default.menu_english' => "EN",
     'default.footer' => 'Welcome blog website. Copyright @2025!',
 ];

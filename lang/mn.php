@@ -9,5 +9,7 @@ return [
     'default.header' => 'COURSES | ABOUT',
     'default.menu_pages' => "ХУУДСУУД",
     'default.menu_contact' => "ХОЛБОГДОХ",
+    'default.menu_mongol' => "MN",
+    'default.menu_english' => "EN",
     'default.footer' => 'Welcome! All rights reserved. Admin panel.',
 ];
