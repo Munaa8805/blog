@@ -2,21 +2,22 @@
 
 class Session
 {
-    protected static $flash_message;
+    protected static $message;
 
-    public static function setFlash($message)
+    public static function setMessage($message)
     {
-        self::$flash_message = $message;
+        self::$message = $message;
     }
 
-    public static function hasFlash()
+    public static function hasMessage()
     {
-        return !is_null(self::$flash_message);
+        return !is_null(self::$message);
     }
 
     public static function flash()
     {
-        echo self::$flash_message;
-        self::$flash_message = null;
+        $message = self::$message;
+        self::$message = null;
+        return $message;
     }
 }

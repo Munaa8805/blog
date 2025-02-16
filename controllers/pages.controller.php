@@ -14,7 +14,7 @@ class PagesController extends Controller
     public function index()
     {
         // render all pages from the database
-
+        Session::setMessage("Hello flash...");
         $webs = $this->model->getList();
         // var_dump($webs);
         return (new View([

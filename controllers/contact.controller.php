@@ -16,6 +16,7 @@ class ContactController extends Controller
         // render all pages from the database
 
 
+        Session::setMessage("Flash message ...");
         // var_dump($webs);
         return (new View([
             'site_title' => Config::get('site_name'),

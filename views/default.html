@@ -11,7 +11,7 @@ if(str_starts_with($uri, '/en')){
 
 
 
-$lan = App::getRouter()->getLanguage();
+$lan = App::getRouter()->getLanguage(); 
 $pathUrl = App::getRouter()->getPathWithLanguage();
 
 
@@ -38,53 +38,81 @@ $pathUrl = App::getRouter()->getPathWithLanguage();
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-        <div class="container-fluid">
+    <header class="bg-dark text-white">
+      <section class="container">
+        <nav class="navbar navbar-dark navbar-expand-lg ">
+          <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <?=Config::get('site_name')?>
+              <?=Config::get('site_name')?>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link <?php if(App::getRouter()->getController()=='pages') echo 'active'; ?>"
-                            aria-current="page" href="/<?=App::getRouter()->getLanguage()?>/pages">
-                            <?=__('default.menu_pages')?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if(App::getRouter()->getController()=='contact') echo 'active'; ?>"
-                            aria-current="page" href="/<?=App::getRouter()->getLanguage()?>/contact">
-                            <?=__('default.menu_contact')?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                      <?php if($lan == 'en'):?>
-                      <a class="nav-link" aria-current="page"  href="/mn/<?php echo $pathUrl ?>">MN</a>
-                      <?php else: ?>
-                      <a class="nav-link" aria-current="page"  href="/en/<?php echo $pathUrl ?>">EN</a>
-                      <?php endif ?>
-                    </li>
-                 
-                </ul>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="nav-link <?php if(App::getRouter()->getController()=='pages') echo 'active'; ?>"
+                    aria-current="page"
+                    href="/<?=App::getRouter()->getLanguage()?>/pages"
+                  >
+                    <?=__('default.menu_pages')?>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link <?php if(App::getRouter()->getController()=='contact') echo 'active'; ?>"
+                    aria-current="page"
+                    href="/<?=App::getRouter()->getLanguage()?>/contact"
+                  >
+                    <?=__('default.menu_contact')?>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <?php if($lan == 'en'):?>
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/mn/<?php echo $pathUrl ?>"
+                    >MN</a
+                  >
+                  <?php else: ?>
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/en/<?php echo $pathUrl ?>"
+                    >EN</a
+                  >
+                  <?php endif ?>
+                </li>
+              </ul>
             </div>
-        </div>
-    </nav>
+          </div>
+        </nav>
+      </section>
     </header>
     <!-- <h3>default.html ==>
         <?=__('default.header')?>
     </h3> -->
 
     <main class="container mt-5">
+      <?php if(Session::hasMessage()): ?>
+      <div class="alert alert-info" role="alert">
+        <?= Session::flash();?>
+      </div>
+      <?php endif ?>
       <?=$data['site_html_content']?>
-  </main>
+    </main>
 
-    <footer class="container footer">
+    <footer class="container footer text-center mt-5">
       <h3>
         <?=__('default.footer')?>
       </h3>

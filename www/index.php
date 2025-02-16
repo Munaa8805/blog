@@ -21,5 +21,6 @@ require_once ROOT . DS . 'lib' . DS . 'init.php';
 $router = new Router($_SERVER['REQUEST_URI']);
 
 
+
 $app = new App();
 $app->run($_SERVER['REQUEST_URI']);
