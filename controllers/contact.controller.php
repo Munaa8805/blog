@@ -7,7 +7,7 @@ class ContactController extends Controller
     {
         // echo 'Pages controller<br>';
         parent::__construct();
-        $this->model = new Page();
+        $this->model = new Message();
     }
 
 
@@ -16,7 +16,14 @@ class ContactController extends Controller
         // render all pages from the database
 
 
-        Session::setMessage("Flash message ...");
+        // Session::setMessage("Flash message ...");
+        if ($_POST) {
+
+            if ($this->model->addNewMessage($_POST)) {
+                Session::setMessage("Message sent successfully");
+            }
+        }
+
         // var_dump($webs);
         return (new View([
             'site_title' => Config::get('site_name'),
